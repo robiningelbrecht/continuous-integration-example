@@ -36,10 +36,7 @@ class Order implements \JsonSerializable
     {
         return [
             'orderId' => (string) $this->getOrderId(),
-            'pizzas' => array_map(fn (Pizza $pizza): array => [
-                'price' => $pizza->getPrice()->jsonSerialize(),
-                'description' => implode(', ', $pizza->getDescription()),
-            ], $this->getPizzas()),
+            'pizzas' => $this->getPizzas(),
         ];
     }
 

@@ -4,7 +4,7 @@ namespace App\Domain\Pizza;
 
 use Money\Money;
 
-interface Pizza
+interface Pizza extends \JsonSerializable
 {
     public function getPrice(): Money;
 

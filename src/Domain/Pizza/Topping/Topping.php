@@ -22,6 +22,15 @@ abstract class Topping implements Pizza
         return [...$this->pizza->getDescription(), ...$this->giveMeTheDescription()];
     }
 
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'price' => $this->getPrice(),
+            'description' => implode(', ', $this->getDescription()),
+        ];
+    }
+
+
     abstract protected function giveMeThePrice(): Money;
 
     /**

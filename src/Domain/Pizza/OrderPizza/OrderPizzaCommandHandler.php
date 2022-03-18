@@ -19,6 +19,6 @@ class OrderPizzaCommandHandler
             ...$command->getPizzas()
         );
 
-        $this->orderRepository->save($order);
+        $this->orderRepository->add($order);
     }
 }

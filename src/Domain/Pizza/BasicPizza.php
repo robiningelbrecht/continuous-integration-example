@@ -23,4 +23,14 @@ class BasicPizza implements Pizza
     {
         return [...$this->size->getDescription(), ...$this->crust->getDescription(), 'Tomato sauce', 'Cheese'];
     }
+
+    public function jsonSerialize(): mixed
+    {
+       return [
+           'price' => $this->getPrice(),
+           'description' => implode(', ', $this->getDescription()),
+       ];
+    }
+
+
 }

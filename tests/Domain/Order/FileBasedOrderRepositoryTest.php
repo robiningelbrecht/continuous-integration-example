@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Domain\Pizza\OrderPizza;
+namespace App\Tests\Domain\Order;
 
 use App\Domain\Order\FileBasedOrderRepository;
 use App\Domain\Order\Order;
