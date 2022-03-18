@@ -9,8 +9,8 @@ use Money\Money;
 class BasicPizza implements Pizza
 {
     public function __construct(
-        private Crust $crust,
         private Size $size,
+        private Crust $crust,
     ) {
     }
 
@@ -21,6 +21,6 @@ class BasicPizza implements Pizza
 
     public function getDescription(): array
     {
-        return [...$this->size->getDescription(), ...$this->crust->getDescription()];
+        return [...$this->size->getDescription(), ...$this->crust->getDescription(), 'Tomato sauce', 'Cheese'];
     }
 }

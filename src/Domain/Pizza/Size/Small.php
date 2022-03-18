@@ -13,6 +13,6 @@ class Small implements Size
 
     public function getDescription(): array
     {
-        return ['Medium pizza'];
+        return ['Small pizza'];
     }
 }

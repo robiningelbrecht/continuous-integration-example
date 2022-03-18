@@ -13,6 +13,6 @@ class Large implements Size
 
     public function getDescription(): array
     {
-        return ['Medium pizza'];
+        return ['Large pizza'];
     }
 }

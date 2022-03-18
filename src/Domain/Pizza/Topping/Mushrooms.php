@@ -4,7 +4,7 @@ namespace App\Domain\Pizza\Topping;
 
 use Money\Money;
 
-class Pepperoni extends Topping
+class Mushrooms extends Topping
 {
     protected function giveMeThePrice(): Money
     {
@@ -13,6 +13,6 @@ class Pepperoni extends Topping
 
     protected function giveMeTheDescription(): array
     {
-        return ['Pepperoni'];
+        return ['Mushrooms'];
     }
 }

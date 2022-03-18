@@ -8,7 +8,7 @@ class Medium implements Size
 {
     public function getPrice(): Money
     {
-        return Money::EUR(8500);
+        return Money::EUR(850);
     }
 
     public function getDescription(): array

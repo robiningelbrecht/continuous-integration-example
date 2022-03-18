@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Pizza\Crust;
+namespace App\Domain\Pizza\Topping;
 
 use App\Domain\Pizza\Pizza;
 use Money\Money;
