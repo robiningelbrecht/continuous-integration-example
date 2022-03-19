@@ -4,7 +4,6 @@ vendor/
 ###> PHP-UNIT ###
 .phpunit
 .phpunit.result.cache
-phpunit.xml.dist
 
 ###> PHPSTORM ###
 .idea/*
