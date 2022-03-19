@@ -1,0 +1,8 @@
+{
+    "price": {
+        "amount": "1000",
+        "currency": "EUR"
+    },
+    "toppings": [],
+    "description": "Medium pizza, Thin crust, Tomato sauce, Cheese"
+}

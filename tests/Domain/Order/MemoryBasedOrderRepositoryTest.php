@@ -2,54 +2,49 @@
 
 namespace App\Tests\Domain\Order;
 
-use App\Domain\Order\FileBasedOrderRepository;
+use App\Domain\Order\MemoryBasedOrderRepository;
 use App\Domain\Order\Order;
 use App\Domain\Order\OrderId;
-use App\Domain\Pizza\Crust\ThickCrust;
+use App\Domain\Pizza\Crust;
 use App\Domain\Pizza\PizzaFactory;
-use App\Domain\Pizza\Size\Large;
-use App\Domain\Pizza\Size\Medium;
+use App\Domain\Pizza\Size;
 use PHPUnit\Framework\TestCase;
 use Spatie\Snapshots\MatchesSnapshots;
 
-class FileBasedOrderRepositoryTest extends TestCase
+class MemoryBasedOrderRepositoryTest extends TestCase
 {
     use MatchesSnapshots;
 
-    private FileBasedOrderRepository $orderRepository;
+    private MemoryBasedOrderRepository $orderRepository;
 
     public function testSaveAndFind(): void
     {
-        $this->orderRepository->truncate();
-
         $this->orderRepository->add(Order::create(
             OrderId::fromString('order-test'),
-            PizzaFactory::neapolitan(new Medium()),
-            PizzaFactory::pepperoni(new Large(), new ThickCrust())
+            PizzaFactory::neapolitan(Size::MEDIUM),
+            PizzaFactory::pepperoni(Size::LARGE, Crust::THICK)
         ));
         $this->orderRepository->add(Order::create(
             OrderId::fromString('order-test2'),
-            PizzaFactory::veggie(new Medium()),
+            PizzaFactory::veggie(Size::MEDIUM),
         ));
 
-        $this->assertMatchesJsonSnapshot(json_decode(file_get_contents(FileBasedOrderRepository::ORDERS_FILE) ?: '[]', true));
+        $this->assertMatchesJsonSnapshot(json_encode($this->orderRepository->findAll()));
     }
 
     public function itShouldThrowOnDuplicateOrderId(): void
     {
-        $this->orderRepository->truncate();
-
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Order already exists: order-test');
 
         $this->orderRepository->add(Order::create(
             OrderId::fromString('order-test'),
-            PizzaFactory::neapolitan(new Medium()),
-            PizzaFactory::pepperoni(new Large(), new ThickCrust())
+            PizzaFactory::neapolitan(Size::MEDIUM),
+            PizzaFactory::pepperoni(Size::LARGE, Crust::THICK)
         ));
         $this->orderRepository->add(Order::create(
             OrderId::fromString('order-test'),
-            PizzaFactory::veggie(new Medium()),
+            PizzaFactory::veggie(Size::MEDIUM),
         ));
     }
 
@@ -57,6 +52,6 @@ class FileBasedOrderRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->orderRepository = new FileBasedOrderRepository();
+        $this->orderRepository = new MemoryBasedOrderRepository();
     }
 }

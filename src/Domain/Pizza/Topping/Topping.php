@@ -2,39 +2,35 @@
 
 namespace App\Domain\Pizza\Topping;
 
-use App\Domain\Pizza\Pizza;
-use Money\Money;
-
-abstract class Topping implements Pizza
+enum Topping: string
 {
-    public function __construct(
-        private Pizza $pizza
-    ) {
-    }
-
-    public function getPrice(): Money
+    case EXTRA_CHEESE = 'extraCheese';
+    case GARLIC = 'garlic';
+    case HAM = 'ham';
+    case MUSHROOMS = 'mushrooms';
+    case PEPPERONI = 'pepperoni';
+    case PEPPERS = 'peppers';
+    case UNIONS = 'unions';
+    public function fqdn(): string
     {
-        return $this->pizza->getPrice()->add($this->giveMeThePrice());
+        return match ($this) {
+            self::EXTRA_CHEESE => ExtraCheese::class,
+            self::GARLIC => Garlic::class,
+            self::HAM => Ham::class,
+            self::MUSHROOMS => Mushrooms::class,
+            self::PEPPERONI => Pepperoni::class,
+            self::PEPPERS => Peppers::class,
+            self::UNIONS => Unions::class,
+        };
     }
-
-    public function getDescription(): array
-    {
-        return [...$this->pizza->getDescription(), ...$this->giveMeTheDescription()];
-    }
-
-    public function jsonSerialize(): mixed
-    {
-        return [
-            'price' => $this->getPrice(),
-            'description' => implode(', ', $this->getDescription()),
-        ];
-    }
-
-
-    abstract protected function giveMeThePrice(): Money;
 
     /**
-     * @return string[]
+     * @param string[] $strings
+     *
+     * @return Topping[]
      */
-    abstract protected function giveMeTheDescription(): array;
+    public static function mapOnStrings(array $strings): array
+    {
+        return array_map(fn (string $string): Topping => Topping::from($string), $strings);
+    }
 }

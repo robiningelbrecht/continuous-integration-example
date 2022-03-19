@@ -19,6 +19,13 @@
             }
         },
         {
+            "name": "Ham",
+            "price": {
+                "amount": "75",
+                "currency": "EUR"
+            }
+        },
+        {
             "name": "Mushrooms",
             "price": {
                 "amount": "100",
@@ -26,9 +33,9 @@
             }
         },
         {
-            "name": "Ham",
+            "name": "Pepperoni",
             "price": {
-                "amount": "75",
+                "amount": "100",
                 "currency": "EUR"
             }
         },
@@ -38,7 +45,14 @@
                 "amount": "50",
                 "currency": "EUR"
             }
+        },
+        {
+            "name": "Unions",
+            "price": {
+                "amount": "50",
+                "currency": "EUR"
+            }
         }
     ],
-    "description": "Large pizza, Thin crust, Tomato sauce, Cheese, Extra cheese, Garlic, Mushrooms, Ham, Peppers"
+    "description": "Medium pizza, Thin crust, Tomato sauce, Cheese, Extra cheese, Garlic, Ham, Mushrooms, Pepperoni, Peppers, Unions"
 }

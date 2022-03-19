@@ -3,5 +3,21 @@
         "amount": "1250",
         "currency": "EUR"
     },
+    "toppings": [
+        {
+            "name": "Extra cheese",
+            "price": {
+                "amount": "150",
+                "currency": "EUR"
+            }
+        },
+        {
+            "name": "Pepperoni",
+            "price": {
+                "amount": "100",
+                "currency": "EUR"
+            }
+        }
+    ],
     "description": "Medium pizza, Thin crust, Tomato sauce, Cheese, Extra cheese, Pepperoni"
 }

@@ -46,6 +46,8 @@
     "sort-packages": true
   },
   "scripts": {
+    "tests:run": "phpunit && phpstan analyse",
+    "tests:update": "phpunit -d --update-snapshots && phpstan analyse",
     "lint:fix": "php-cs-fixer fix"
   }
 }
