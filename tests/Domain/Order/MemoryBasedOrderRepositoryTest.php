@@ -32,7 +32,7 @@ class MemoryBasedOrderRepositoryTest extends TestCase
         $this->assertMatchesJsonSnapshot(json_encode($this->orderRepository->findAll()));
     }
 
-    public function itShouldThrowOnDuplicateOrderId(): void
+    public function testItShouldThrowOnDuplicateOrderId(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Order already exists: order-test');

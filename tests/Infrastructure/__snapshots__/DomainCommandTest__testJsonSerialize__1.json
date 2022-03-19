@@ -1,0 +1,10 @@
+{
+    "commandName": "App\\Tests\\Infrastructure\\TestCommand",
+    "payload": {
+        "firstParam": "value",
+        "secondParam": {
+            "key": "value1",
+            "anotherKey": "value2"
+        }
+    }
+}
