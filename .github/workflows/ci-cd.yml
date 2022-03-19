@@ -27,8 +27,9 @@ jobs:
 
       - name: Check minimum required code coverage
         run: |
-          CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage --enabled-metrics=lines)
+          CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
           echo ${CODE_COVERAGE}
+          exit 1
 
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
