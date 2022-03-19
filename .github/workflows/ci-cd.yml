@@ -29,7 +29,9 @@ jobs:
         run: |
           CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
           echo ${CODE_COVERAGE}
-          exit 1
+          if [[ ${CODE_COVERAGE} == *"give yourself a"* ]] ; then
+            exit 1;
+          fi
 
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
