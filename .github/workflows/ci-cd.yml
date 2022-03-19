@@ -1,17 +1,10 @@
 name: CI/CD
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on pull request events but only for the master branch
   push: # @TODO: REMOVE AFTER TESTING
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test-suite:
     name: Test suite
@@ -31,6 +24,15 @@ jobs:
 
       - name: Run test suite
         run: vendor/bin/phpunit --testsuite unit --coverage-clover clover.xml
+
+      - name: Check minimum required code coverage
+        run: |
+          CODE_COVERAGE=$(vendor/bin/coverage-checker tests/coverage/report.txt 90 --processor=text-coverage --enabled-metrics=lines) \
+          echo "$CODE_COVERAGE" \
+          if [[ $CODE_COVERAGE == *"test coverage, got"* ]] ; then \
+            exit 1; \
+          fi \
+          exit 1;
 
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
