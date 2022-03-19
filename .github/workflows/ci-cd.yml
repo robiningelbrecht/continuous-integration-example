@@ -23,7 +23,13 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Run test suite
-        run: vendor/bin/phpunit --testsuite unit --coverage-clover clover.xml
+        run: vendor/bin/phpunit --testsuite unit --fail-on-incomplete  --log-junit junit.xml --coverage-clover clover.xml
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v1.31
+        if: always()
+        with:
+          files: "junit.xml"
 
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
