@@ -27,12 +27,8 @@ jobs:
 
       - name: Check minimum required code coverage
         run: |
-          CODE_COVERAGE=$(vendor/bin/coverage-checker tests/coverage/report.txt 90 --processor=text-coverage --enabled-metrics=lines) \
-          echo "$CODE_COVERAGE" \
-          if [[ $CODE_COVERAGE == *"test coverage, got"* ]] ; then \
-            exit 1; \
-          fi \
-          exit 1;
+          CODE_COVERAGE=$(vendor/bin/coverage-checker tests/coverage/report.txt 90 --processor=clover-coverage --enabled-metrics=lines) \
+          echo "$CODE_COVERAGE"
 
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0

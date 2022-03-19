@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5686fadc6b963655ed5b9f23850c3c19",
+    "content-hash": "f2088612bb72d78ba618dcc6491484ed",
     "packages": [
         {
             "name": "brick/math",
@@ -578,6 +578,72 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "adhocore/cli",
+            "version": "0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adhocore/php-cli.git",
+                "reference": "e2e06d080c5fcefbe11a448cc4f87f7b144e8d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adhocore/php-cli/zipball/e2e06d080c5fcefbe11a448cc4f87f7b144e8d35",
+                "reference": "e2e06d080c5fcefbe11a448cc4f87f7b144e8d35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ahc\\Cli\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jitendra Adhikari",
+                    "email": "jiten.adhikary@gmail.com"
+                }
+            ],
+            "description": "Command line interface library for PHP",
+            "keywords": [
+                "PHP7",
+                "argument-parser",
+                "argv-parser",
+                "cli",
+                "cli-action",
+                "cli-app",
+                "cli-color",
+                "cli-option",
+                "cli-writer",
+                "command",
+                "console",
+                "console-app",
+                "php-cli",
+                "stream-input",
+                "stream-output"
+            ],
+            "support": {
+                "issues": "https://github.com/adhocore/php-cli/issues",
+                "source": "https://github.com/adhocore/php-cli/tree/0.9.1"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/ji10",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-18T05:09:37+00:00"
+        },
         {
             "name": "composer/pcre",
             "version": "3.0.0",
@@ -1161,6 +1227,66 @@
                 }
             ],
             "time": "2022-03-03T13:19:32+00:00"
+        },
+        {
+            "name": "myclabs/php-enum",
+            "version": "1.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myclabs/php-enum.git",
+                "reference": "b942d263c641ddb5190929ff840c68f78713e937"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/b942d263c641ddb5190929ff840c68f78713e937",
+                "reference": "b942d263c641ddb5190929ff840c68f78713e937",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "1.*",
+                "vimeo/psalm": "^4.6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MyCLabs\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP Enum contributors",
+                    "homepage": "https://github.com/myclabs/php-enum/graphs/contributors"
+                }
+            ],
+            "description": "PHP Enum implementation",
+            "homepage": "http://github.com/myclabs/php-enum",
+            "keywords": [
+                "enum"
+            ],
+            "support": {
+                "issues": "https://github.com/myclabs/php-enum/issues",
+                "source": "https://github.com/myclabs/php-enum/tree/1.8.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/myclabs/php-enum",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-07-05T08:18:36+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2292,36 +2418,53 @@
         },
         {
             "name": "robiningelbrecht/phpunit-coverage-check",
-            "version": "0.3.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robiningelbrecht/phpunit-coverage-check.git",
-                "reference": "9618fa74477fbc448c1b0599bef5153d170094bd"
+                "reference": "dad001969c7b7605d58aebdc343d279bc237a26b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robiningelbrecht/phpunit-coverage-check/zipball/9618fa74477fbc448c1b0599bef5153d170094bd",
-                "reference": "9618fa74477fbc448c1b0599bef5153d170094bd",
+                "url": "https://api.github.com/repos/robiningelbrecht/phpunit-coverage-check/zipball/dad001969c7b7605d58aebdc343d279bc237a26b",
+                "reference": "dad001969c7b7605d58aebdc343d279bc237a26b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0.0"
+                "adhocore/cli": "^0.9.0",
+                "myclabs/php-enum": "^1.8",
+                "php": ">=7.4"
             },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.2",
+                "phpunit/phpunit": "^9.5",
+                "spatie/phpunit-snapshot-assertions": "^4.2"
+            },
+            "default-branch": true,
             "bin": [
-                "bin/coverage-check"
+                "bin/coverage-checker"
             ],
             "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPUnitCoverageChecker\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
+                    "name": "Robin Ingelbrecht",
+                    "email": "ingelbrecht_robin@hotmail.com"
+                },
+                {
                     "name": "Richard Regeer",
                     "email": "rich2309@gmail.com"
                 }
             ],
-            "description": "Check the code coverage using the clover report of phpunit",
+            "description": "Check the code coverage using the clover or text report of phpunit",
             "keywords": [
                 "ci",
                 "code coverage",
@@ -2331,9 +2474,9 @@
                 "unittest"
             ],
             "support": {
-                "source": "https://github.com/robiningelbrecht/phpunit-coverage-check/tree/0.3.1"
+                "source": "https://github.com/robiningelbrecht/phpunit-coverage-check/tree/master"
             },
-            "time": "2019-10-14T07:04:13+00:00"
+            "time": "2021-12-15T13:56:43+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -4873,7 +5016,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "robiningelbrecht/phpunit-coverage-check": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
