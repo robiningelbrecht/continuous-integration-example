@@ -29,7 +29,7 @@ jobs:
         run: |
           CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
           echo ${CODE_COVERAGE}
-          if [[ ${CODE_COVERAGE} == *"give yourself a"* ]] ; then
+          if [[ ${CODE_COVERAGE} == *"test coverage, got"* ]] ; then
             exit 1;
           fi
 
