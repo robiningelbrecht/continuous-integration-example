@@ -1,4 +1,10 @@
-# CI/CD example
+<h1 align="center">CI/CD example</h1>
+
+<p align="center">
+[![codecov](https://codecov.io/gh/robiningelbrecht/continuous-integration-example/branch/master/graph/badge.svg?token=9FEMHIZTZ0)](https://codecov.io/gh/robiningelbrecht/continuous-integration-example)
+</p>
+
+------
 
 This repository aims to build a fairly complete CI/CD example using GitHub workflows and actions.
 
