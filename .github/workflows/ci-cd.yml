@@ -1,0 +1,41 @@
+name: CI/CD
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on pull request events but only for the master branch
+  push: # @TODO: REMOVE AFTER TESTING
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test-suite:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Setup PHP 8.1 with Xdebug 3.x
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: xdebug
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Run test suite
+        run: vendor/bin/phpunit  --testsuite unit --coverage-clover clover.xml
+
+      - name: Send test coverage to codecov.io
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          files: clover.xml
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
