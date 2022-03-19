@@ -31,7 +31,7 @@ jobs:
         run: composer install
 
       - name: Run test suite
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --testsuite unit --coverage-clover clover.xml
 
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
