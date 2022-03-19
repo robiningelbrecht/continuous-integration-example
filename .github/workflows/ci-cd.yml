@@ -25,14 +25,6 @@ jobs:
       - name: Run test suite
         run: vendor/bin/phpunit --testsuite unit --coverage-clover clover.xml
 
-      - name: Check minimum required code coverage
-        run: |
-          CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
-          echo ${CODE_COVERAGE}
-          if [[ ${CODE_COVERAGE} == *"test coverage, got"* ]] ; then
-            exit 1;
-          fi
-
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
         with:
@@ -40,6 +32,13 @@ jobs:
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
 
+      - name: Check minimum required code coverage
+        run: |
+          CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
+          echo ${CODE_COVERAGE}
+          if [[ ${CODE_COVERAGE} == *"test coverage, got"* ]] ; then
+            exit 1;
+          fi
 
   php-stan-php-cs:
     name: PHPstan (level 9) & PHPcs
