@@ -5,7 +5,7 @@
 <a href="https://codecov.io/gh/robiningelbrecht/continuous-integration-example"><img src="https://codecov.io/gh/robiningelbrecht/continuous-integration-example/branch/master/graph/badge.svg?token=9FEMHIZTZ0" alt="codecov.io"></a>
 <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/robiningelbrecht/continuous-integration-example" alt="License"></a>
 <a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat" alt="PHPStan Enabled"></a>
-<a href="https://php.net/"><img src="https://img.shields.io/packagist/php-v/robiningelbrecht/continuous-integration-example" alt="PHP"></a>
+<a href="https://php.net/"><img src="https://img.shields.io/packagist/php-v/robiningelbrecht/continuous-integration-example/dev-master" alt="PHP"></a>
 </p>
 
 ------
