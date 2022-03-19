@@ -1,9 +1,6 @@
 name: CI/CD
 on:
-  push: # @TODO: REMOVE AFTER TESTING
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
   workflow_dispatch:
 jobs:
   test-suite:
@@ -30,6 +27,7 @@ jobs:
         if: always()
         with:
           files: "junit.xml"
+          check_name: "Unit test results"
 
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
