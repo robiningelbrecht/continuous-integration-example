@@ -136,7 +136,7 @@ After running the tests, we can visualize and publish them as a comment on the p
 ```
 
 <p align="center">
-	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/unit-test-results.png" alt="Unit test results" style="max-width: 500px">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/unit-test-results.png" alt="Unit test results" width="500">
 </p>
 
 TODO: link to example failed PRs. 
