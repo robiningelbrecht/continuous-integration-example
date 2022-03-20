@@ -13,6 +13,6 @@ class Pineapple extends BaseTopping
 
     protected function giveMeTheDescription(): string
     {
-        //test
+        // test
     }
 }

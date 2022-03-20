@@ -40,4 +40,14 @@ class PizzaFactory
             )
             ->build();
     }
+
+    public static function hawai(Size $size): Pizza
+    {
+        return PizzaBuilder::fromSizeAndCrust($size, Crust::THIN)
+            ->withToppings(
+                Topping::HAM,
+                Topping::PINEAPPLE,
+            )
+            ->build();
+    }
 }
