@@ -20,7 +20,7 @@ example using GitHub workflows and actions.
 
 Keep in mind that the toolset used in this repository is not the only solution 
 to build a solid workflow. I'm sure there are many tools I have never heard of 
-that can get the job done as wel 🚀.
+that can get the job done as wel 💅.
 
 If you liked this tutorial, please consider giving it a ⭐
 
@@ -32,7 +32,7 @@ It should be fairly easy to convert the workflows to be used with a "non PHP" co
 
 ------
 
-<h2>Setting up the repository</h2>
+<h2>🔧 Setting up the repository</h2>
 
 Before we get into the technical stuff, we first need to set up our repository.
 The main thing we want to do is setting up the _default branch_
@@ -70,7 +70,7 @@ All other options should stay unchecked.
 These rules will basically disable the ability to push to your default branch
 and force you to work with pull requests and code reviews.
 
-<h2>Configuring the CI/CD workflow</h2>
+<h2>💎 Configuring the CI/CD workflow</h2>
 
 The next step is configuring the CI/CD workflow. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci-cd.yml) 
 used in this example contains two jobs that __should__ ensure code quality. It is triggered
@@ -114,7 +114,7 @@ TODO: screenshot of repo branch check settings.
 
 <h3>Static code analysis & coding standards</h3>
 
-<h2>Configuring the build & deploy workflow</h2>
+<h2>🚀 Configuring the build & deploy workflow</h2>
 
 <h3>Creating a build</h3>
 
