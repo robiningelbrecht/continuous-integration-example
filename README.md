@@ -1,7 +1,7 @@
 <h1 align="center">CI/CD example</h1>
 
 <p align="center">
-	<img src="https://i.imgur.com/WaRKPlC.png" alt="PHPStan" width="300" height="300">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/f0f2dcace96dfa52eb405151ede51e47ed891de4/readme/ci-cd.png" alt="CI/CD">
 </p>
 
 <p align="center">
