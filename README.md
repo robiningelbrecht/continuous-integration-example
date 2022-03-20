@@ -43,5 +43,22 @@ branch to whatever you want, but usually "_main_" or "_master_" are used.
 
 <h3>Branch protection rules</h3>
 
-<h2 align="center">Configuring CI/CD workflow</h2>
-<h2 align="center">Configuring deploy workflow</h2>
+Branch protection rules allow you to disable force pushing, prevent branches from being deleted, 
+and optionally require status checks before merging. These checks are important to ensure
+code quality and have a solid CI/CD. For now, we will configure the bare minimum, 
+but we will get back to this.
+
+Navigate to https://github.com/username/repository/settings/branches and 
+add a new branch protection rule with following settings:
+
+* Branch name pattern: _the name of your default branch_
+* ✅ Require a pull request before merging
+* ✅ Require approvals
+* Required number of approvals before merging: _1_
+* ✅ Require status checks to pass before merging
+* ✅ Require branches to be up-to-date before merging
+
+All other options should stay unchecked.
+
+<h2>Configuring CI/CD workflow</h2>
+<h2>Configuring deploy workflow</h2>
