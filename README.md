@@ -14,7 +14,8 @@
 
 ------
 
-This repository aims to build a fairly complete <a href="https://en.wikipedia.org/wiki/CI/CD" target="_blanks">CI/CD</a> 
+This repository aims to build a fairly complete 
+<a href="https://en.wikipedia.org/wiki/CI/CD" target="_blanks">CI/CD</a> 
 example using GitHub workflows and actions.
 
 Keep in mind that the toolset used in this repository is not the only solution 
@@ -22,6 +23,9 @@ to build a solid workflow. I'm sure there are many tools I have never heard of
 that can get the job done as wel 🚀.
 
 If you liked this tutorial, please consider giving it a ⭐
+
+__Note__: This tutorial won't explain the complete inner workings of GitHub 
+workflows and actions, so some basic knowledge is required.
 
 ------
 
@@ -60,5 +64,31 @@ add a new branch protection rule with following settings:
 
 All other options should stay unchecked.
 
-<h2>Configuring CI/CD workflow</h2>
-<h2>Configuring deploy workflow</h2>
+These rules will basically disable the ability to push to your default branch
+and force you to work with pull requests and code reviews.
+
+<h2>Configuring the CI/CD workflow</h2>
+
+The next step is configuring the CI/CD workflow. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci-cd.yml) 
+used in this example contains two jobs that __should__ ensure code quality. It is triggered
+for all pull requests:
+
+```yaml
+on:
+  pull_request:
+  workflow_dispatch:
+```
+
+Since we configured that codes changes can only end up on the default branch via pull requests,
+we are sure that the test suite will run for every new/changed line of code.
+
+<h3>Running test suite</h3>
+
+<h3>Static code analysis & coding standards</h3>
+
+<h2>Configuring the build & deploy workflow</h2>
+
+<h3>Creating a build</h3>
+
+<h3>Deploying to a remote server</h3>
+https://github.com/marketplace/actions/ssh-remote-commands
