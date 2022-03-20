@@ -1,7 +1,7 @@
 <h1 align="center">CI/CD example</h1>
 
 <p align="center">
-	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/ci-cd.png" alt="CI/CD">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/ci.png" alt="CI/CD">
 </p>
 
 <p align="center">
