@@ -10,7 +10,6 @@ enum Topping: string
     case MUSHROOMS = 'mushrooms';
     case PEPPERONI = 'pepperoni';
     case PEPPERS = 'peppers';
-    case PINEAPPLE = 'pineapple';
     case UNIONS = 'unions';
     public function fqdn(): string
     {
@@ -21,7 +20,6 @@ enum Topping: string
             self::MUSHROOMS => Mushrooms::class,
             self::PEPPERONI => Pepperoni::class,
             self::PEPPERS => Peppers::class,
-            self::PINEAPPLE => Pineapple::class,
             self::UNIONS => Unions::class,
         };
     }
