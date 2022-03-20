@@ -10,8 +10,17 @@
 
 ------
 
-This repository aims to build a fairly complete CI/CD example using GitHub workflows and actions.
+This repository aims to build a fairly complete <a href="https://en.wikipedia.org/wiki/CI/CD" target="_blanks">CI/CD</a> 
+example using GitHub workflows and actions.
 
-Keep in mind that the toolset used in this repository is not the only solution to build a solid workflow. I'm sure there are many tools I have never heard of that can get the job done as wel 🚀.
+Keep in mind that the toolset used in this repository is not the only solution 
+to build a solid workflow. I'm sure there are many tools I have never heard of 
+that can get the job done as wel 🚀.
 
-If you liked this tutorail, please consider giving it a ⭐
+If you liked this tutorial, please consider giving it a ⭐
+
+------
+
+<h2 align="center">Setting up the repository</h2>
+<h2 align="center">Configuring CI/CD workflow</h2>
+<h2 align="center">Configuring deploy workflow</h2>
