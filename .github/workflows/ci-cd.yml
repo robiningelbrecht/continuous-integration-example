@@ -45,7 +45,7 @@ jobs:
           fi
 
   php-stan-php-cs:
-    name: PHPstan (level 9) & PHPcs
+    name: PHPStan (level 9) & PHPcs
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP 8.1
@@ -59,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist
 
-      - name: Run PHPstan
+      - name: Run PHPStan
         run: vendor/bin/phpstan analyse
 
       - name: Run PHPcs fixer dry-run
