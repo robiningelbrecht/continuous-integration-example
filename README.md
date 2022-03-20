@@ -27,6 +27,9 @@ If you liked this tutorial, please consider giving it a ⭐
 __Note__: This tutorial won't explain the complete inner workings of GitHub 
 workflows and actions, so some basic knowledge is required.
 
+__Note 2__: Since I'm a PHP developer, all examples in this tutorial are PHP based.
+It should be fairly easy to convert the workflows to be used with a "non PHP" code base.
+
 ------
 
 <h2>Setting up the repository</h2>
@@ -82,7 +85,32 @@ on:
 Since we configured that codes changes can only end up on the default branch via pull requests,
 we are sure that the test suite will run for every new/changed line of code.
 
-<h3>Running test suite</h3>
+<h3>Running the test suite</h3>
+
+Let's take a closer look at all steps configured in this workflow.
+
+For the unit tests to be able to run, we need to install PHP (deuh). Later on 
+we'll need Xdebug as well to check and ensure code coverage.
+
+```yaml
+  - name: Setup PHP 8.1 with Xdebug 3.x
+    uses: shivammathur/setup-php@v2
+    with:
+      php-version: '8.1'
+      coverage: xdebug
+```
+
+The next step is to pull in the code and install all dependencies
+
+```yaml
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+  - name: Install dependencies
+    run: composer install --prefer-dist
+```
+
+TODO: screenshot of repo branch check settings.
 
 <h3>Static code analysis & coding standards</h3>
 
