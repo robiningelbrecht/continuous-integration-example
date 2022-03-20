@@ -110,7 +110,7 @@ The next step is to pull in the code and install all dependencies
     run: composer install --prefer-dist
 ```
 
-After which we can finally run the tests
+After which the tests can finally run
 
 ```yaml
   - name: Run test suite
@@ -122,10 +122,27 @@ Each of them have a purpose:
 
 * __--fail-on-incomplete__: forces PHPUnit to fail on incomplete tests
 * __--log-junit junit.xml__: generates an XML file to publish the test results later on
-* __--coverage-clover clover.xml__: generates an XML file to check the tes coverage later on
+* __--coverage-clover clover.xml__: generates an XML file to check the test coverage later on
 
-TODO: link to example failed PRs.
+After running the tests, we can visualize and publish them as a comment on the pull request.
+
+```yaml
+  - name: Publish test results
+    uses: EnricoMi/publish-unit-test-result-action@v1.31
+    if: always()
+    with:
+      files: "junit.xml"
+      check_name: "Unit test results"
+```
+
+<p align="center">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/unit-test-results.png" alt="Unit test results">
+</p>
+
+TODO: link to example failed PRs. 
+
 TODO: screenshot of repo branch check settings.
+
 
 <h3>Static code analysis & coding standards</h3>
 
