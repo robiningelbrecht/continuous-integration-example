@@ -110,6 +110,21 @@ The next step is to pull in the code and install all dependencies
     run: composer install --prefer-dist
 ```
 
+After which we can finally run the tests
+
+```yaml
+  - name: Run test suite
+    run: vendor/bin/phpunit --testsuite unit --fail-on-incomplete  --log-junit junit.xml --coverage-clover clover.xml
+```
+
+You probably noticed that the command to run the test contains some options.
+Each of them have a purpose:
+
+* __--fail-on-incomplete__: forces PHPUnit to fail on incomplete tests
+* __--log-junit junit.xml__: generates an XML file to publish the test results later on
+* __--coverage-clover clover.xml__: generates an XML file to check the tes coverage later on
+
+TODO: link to example failed PRs.
 TODO: screenshot of repo branch check settings.
 
 <h3>Static code analysis & coding standards</h3>
