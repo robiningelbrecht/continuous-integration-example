@@ -8,11 +8,11 @@ class Pineapple extends BaseTopping
 {
     protected function giveMeThePrice(): Money
     {
-        // TODO: Implement giveMeThePrice() method.
+        return Money::EUR(100);
     }
 
     protected function giveMeTheDescription(): string
     {
-        // test
+        return 'Pineapple';
     }
 }
