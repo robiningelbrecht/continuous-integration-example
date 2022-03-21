@@ -45,7 +45,7 @@ against which all pull requests and code commits are automatically made,
 unless you specify a different branch. 
 
 You can configure the default branch by navigating to 
-https://github.com/username/repository/settings/branches. You can set the default 
+`https://github.com/username/repository/settings/branches`. You can set the default 
 branch to whatever you want, but usually "_main_" or "_master_" are used.
 
 <h3>Branch protection rules</h3>
@@ -55,7 +55,7 @@ and optionally require status checks before merging. These checks are important 
 code quality and have a solid CI/CD. For now, we will configure the bare minimum, 
 but we will get back to this.
 
-Navigate to https://github.com/username/repository/settings/branches and 
+Navigate to `https://github.com/username/repository/settings/branches` and 
 add a new branch protection rule with following settings:
 
 * Branch name pattern: _the name of your default branch_
@@ -87,7 +87,7 @@ we are sure that the test suite will run for every new/changed line of code.
 
 <h3>Running the test suite</h3>
 
-Let's take a closer look at all steps configured in this workflow.
+Let's take a closer look at all steps configured in this job.
 
 For the unit tests to be able to run, we need to install PHP (deuh). Later on 
 we'll need Xdebug as well to check and ensure code coverage.
@@ -161,12 +161,56 @@ The codecov action also adds a comment on each pull request.
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/codecov-results.png" alt="Unit test results" width="500">
 </p>
 
-TODO: link to example failed PRs. 
+Last but not least we ensure a minimum code coverage of 90% across the project. 
+If the minimum coverage isn't reached, the job will fail.
+This is done using [this code coverage checker](https://github.com/robiningelbrecht/phpunit-coverage-check).
 
-TODO: screenshot of repo branch check settings.
-
+```yaml
+  - name: Check minimum required code coverage
+    run: |
+      CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
+      echo ${CODE_COVERAGE}
+      if [[ ${CODE_COVERAGE} == *"test coverage, got"* ]] ; then
+        exit 1;
+      fi
+```
 
 <h3>Static code analysis & coding standards</h3>
+
+Running static code analysis and applying coding standards are configured in a separate job
+since these do not need Xdebug or other fancy dependencies.
+
+To run these tasks we'll use [PHPStan](https://phpstan.org/) 
+and [PHP Coding Standards Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
+
+> PHPStan focuses on finding errors in your code without actually running it. 
+> It catches whole classes of bugs even before you write tests for the code.
+
+> The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards; 
+> whether you want to follow PHP coding standards as defined in the PSR-1, PSR-2, etc., 
+> or other community driven ones like the Symfony one.
+
+Once again we need to install PHP, checkout the code and install dependencies
+
+```yaml
+  - name: Setup PHP 8.1
+    uses: shivammathur/setup-php@v2
+    with:
+      php-version: '8.1'
+
+  - name: Checkout code
+    uses: actions/checkout@v2
+    
+  - name: Install dependencies
+    run: composer install --prefer-dist
+```
+
+Now that the CI/CD has been configured, we can go back to the repository branch protection rules
+and tighten them up by configuring extra required status checks.
+
+TODO: link to example failed PRs.
+
+TODO: screenshot of repo branch check settings.
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
