@@ -139,6 +139,28 @@ After running the tests, we can visualize and publish them as a comment on the p
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/unit-test-results.png" alt="Unit test results" width="500">
 </p>
 
+We'll also send the generated `clover.xml` report to [codecov.io](https://about.codecov.io/)
+
+> Codecov gives companies actionable coverage insights when and where 
+> they need them to ensure they are shipping quality code.
+
+Codecov.io basically allows you to check your code coverage and find untested code.
+It does so by providing [fancy graphs and charts](https://app.codecov.io/gh/robiningelbrecht/continuous-integration-example).
+
+```yaml
+  - name: Send test coverage to codecov.io
+    uses: codecov/codecov-action@v2.1.0
+    with:
+      files: clover.xml
+      fail_ci_if_error: true # optional (default = false)
+      verbose: true # optional (default = false)
+```
+
+The codecov action also adds a comment on each pull request.
+<p align="center">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/codecov-results.png" alt="Unit test results" width="500">
+</p>
+
 TODO: link to example failed PRs. 
 
 TODO: screenshot of repo branch check settings.
