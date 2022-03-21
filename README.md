@@ -178,7 +178,7 @@ This is done using [this code coverage checker](https://github.com/robiningelbre
 <h3>Static code analysis & coding standards</h3>
 
 Running static code analysis and applying coding standards are configured in a separate job
-since these do not need Xdebug or other fancy dependencies.
+because these don't need Xdebug or other fancy dependencies.
 
 To run these tasks we'll use [PHPStan](https://phpstan.org/) 
 and [PHP Coding Standards Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
