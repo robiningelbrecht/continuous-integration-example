@@ -9,6 +9,7 @@ runs:
         php-version: '8.1'
 
     - name: Install dependencies
+      shell: bash
       run: composer install --prefer-dist --no-dev
 
     # https://github.com/marketplace/actions/upload-a-build-artifact
