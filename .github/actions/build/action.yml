@@ -1,4 +1,3 @@
-name: "Build"
 runs:
   using: "composite"
   steps:
@@ -8,11 +7,8 @@ runs:
       with:
         php-version: '8.1'
 
-    # https://github.com/marketplace/actions/checkout
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Install dependencies
+      shell: bash
       run: composer install --prefer-dist --no-dev
 
     # https://github.com/marketplace/actions/upload-a-build-artifact
