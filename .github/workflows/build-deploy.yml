@@ -4,7 +4,7 @@ on:
 jobs:
   build:
     if: github.ref_name == 'master' || github.ref_name == 'development'
-    name: Build
+    name: Create build for ${{ github.ref_name }}
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name }}
     concurrency: ${{ github.ref_name }}
@@ -34,7 +34,7 @@ jobs:
             !.git/**
 
   deploy:
-    name: Deploy
+    name: Deploy to ${{ github.ref_name }}
     needs: build
     runs-on: ubuntu-latest
     environment:
