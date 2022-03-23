@@ -32,7 +32,7 @@ It should be fairly easy to convert the workflows to be used with a "non PHP" co
 
 ------
 
-<h2>🐣  Setting up the repository</h2>
+<h2>🐣 Setting up the repository</h2>
 
 Before we get into the technical stuff, we first need to set up our repository.
 The main thing we want to do is setting up the _default branch_
@@ -259,7 +259,8 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 <h3>Example pull requests</h3>
 
-TODO: link to example failed PRs.
+* [Failing PR because of PHPStan](https://github.com/robiningelbrecht/continuous-integration-example/pull/3)
+* TODO: link to more examples of (failed) PRs.
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
