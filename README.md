@@ -255,9 +255,11 @@ required status checks:
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/protected-branch-settings.png" alt="Protected branch settings" width="500">
 </p>
 
-TODO: link to example failed PRs.
+These settings require both jobs in the CI/CD workflow to succeed before the PR can be merged.
 
-TODO: screenshot of repo branch check settings.
+<h3>Example pull requests</h3>
+
+TODO: link to example failed PRs.
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
