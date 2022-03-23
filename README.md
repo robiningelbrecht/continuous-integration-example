@@ -7,8 +7,8 @@
 <p align="center">
 <a href="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml"><img src="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml/badge.svg" alt="CI/CD"></a>
 <a href="https://codecov.io/gh/robiningelbrecht/continuous-integration-example"><img src="https://codecov.io/gh/robiningelbrecht/continuous-integration-example/branch/master/graph/badge.svg?token=9FEMHIZTZ0" alt="codecov.io"></a>
-<a href="https://github.com/robiningelbrecht/continuous-integration-example/blob/master/LICENSE"><img src="https://img.shields.io/github/license/robiningelbrecht/continuous-integration-example?logo=open%20source%20initiative&logoColor=white" alt="License"></a>
-<a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat" alt="PHPStan Enabled"></a>
+<a href="https://github.com/robiningelbrecht/continuous-integration-example/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-428f7e.svg?logo=open%20source%20initiative&logoColor=white" alt="License"></a>
+<a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-enabled-succes.svg?style=flat" alt="PHPStan Enabled"></a>
 <a href="https://php.net/"><img src="https://img.shields.io/badge/php->=8.1-777bb3.svg?logo=php&logoColor=white" alt="PHP"></a>
 </p>
 
@@ -149,6 +149,7 @@ Each of them have a purpose:
 After running the tests, we can visualize and publish them as a comment on the pull request.
 
 ```yaml
+  # https://github.com/marketplace/actions/publish-unit-test-results
   - name: Publish test results
     uses: EnricoMi/publish-unit-test-result-action@v1.31
     if: always()
@@ -170,6 +171,7 @@ Codecov.io basically allows you to check your code coverage and find untested co
 It does so by providing [fancy graphs and charts](https://app.codecov.io/gh/robiningelbrecht/continuous-integration-example).
 
 ```yaml
+  # https://github.com/marketplace/actions/codecov
   - name: Send test coverage to codecov.io
     uses: codecov/codecov-action@v2.1.0
     with:
@@ -180,7 +182,7 @@ It does so by providing [fancy graphs and charts](https://app.codecov.io/gh/robi
 
 The codecov action also adds a comment on each pull request.
 <p align="center">
-	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/codecov-results.png" alt="Unit test results" width="500">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/codecov-results.png" alt="Codecov.io results" width="500">
 </p>
 
 Last but not least we ensure a minimum code coverage of 90% across the project. 
@@ -215,11 +217,13 @@ and [PHP Coding Standards Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
 Once again we need to install PHP, checkout the code and install dependencies
 
 ```yaml
+  # https://github.com/marketplace/actions/setup-php-action
   - name: Setup PHP 8.1
     uses: shivammathur/setup-php@v2
     with:
       php-version: '8.1'
 
+  # https://github.com/marketplace/actions/checkout
   - name: Checkout code
     uses: actions/checkout@v2
     
@@ -227,8 +231,29 @@ Once again we need to install PHP, checkout the code and install dependencies
     run: composer install --prefer-dist
 ```
 
-Now that the CI/CD has been configured, we can go back to the repository branch protection rules
-and tighten them up by configuring extra required status checks.
+After which we run the static code analyser
+
+```yaml
+  - name: Run PHPStan
+    run: vendor/bin/phpstan analyse
+```
+
+And check coding standards
+
+```yaml
+  - name: Run PHPcs fixer dry-run
+    run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --config=.php-cs-fixer.dist.php
+```
+
+The job will fail if one of both tasks does not succeed.
+
+Now that the CI/CD workflow has been configured, we can go back to the 
+repository branch protection rules and tighten them up by configuring extra 
+required status checks:
+
+<p align="center">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/protected-branch-settings.png" alt="Protected branch settings" width="500">
+</p>
 
 TODO: link to example failed PRs.
 

@@ -24,6 +24,7 @@ jobs:
       - name: Run test suite
         run: vendor/bin/phpunit --testsuite unit --fail-on-incomplete  --log-junit junit.xml --coverage-clover clover.xml
 
+      # https://github.com/marketplace/actions/publish-unit-test-results
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action@v1.31
         if: always()
@@ -31,6 +32,7 @@ jobs:
           files: "junit.xml"
           check_name: "Unit test results"
 
+      # https://github.com/marketplace/actions/codecov
       - name: Send test coverage to codecov.io
         uses: codecov/codecov-action@v2.1.0
         with:
@@ -50,11 +52,13 @@ jobs:
     name: PHPStan (level 9) & PHPcs
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/marketplace/actions/setup-php-action
       - name: Setup PHP 8.1
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
 
+      # https://github.com/marketplace/actions/checkout
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -65,4 +69,4 @@ jobs:
         run: vendor/bin/phpstan analyse
 
       - name: Run PHPcs fixer dry-run
-        run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --using-cache=no --config=.php-cs-fixer.dist.php
+        run: vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --config=.php-cs-fixer.dist.php
