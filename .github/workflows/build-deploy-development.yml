@@ -1,14 +1,10 @@
-name: Build & deploy
+name: Build & deploy develoment
 on:
   workflow_dispatch:
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    environment:
-      name: development
-      url: https://development.environment
-    concurrency: development
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout code

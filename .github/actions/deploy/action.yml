@@ -1,6 +1,6 @@
 inputs:
   environment:
-    description: 'the environment to deploy'
+    description: 'The environment to deploy'
     required: true
 runs:
   using: "composite"
