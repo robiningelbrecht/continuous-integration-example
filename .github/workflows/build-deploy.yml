@@ -17,6 +17,19 @@ jobs:
       - name: Create build
         uses: ./.github/actions/build
 
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+      url: https://development.env
+    concurrency: development
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Deploy
         uses: ./.github/actions/deploy
         with:
