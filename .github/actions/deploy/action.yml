@@ -1,0 +1,15 @@
+inputs:
+  environment:
+    description: 'the environment to deploy'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: echo Goin to deploy ${{ inputs.environment }}.
+      shell: bash
+
+    # https://github.com/marketplace/actions/download-a-build-artifact
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: artifact-release-without-tests
