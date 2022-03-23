@@ -6,9 +6,7 @@ jobs:
     if: github.ref_name == 'master' || github.ref_name == 'development'
     name: Build
     runs-on: ubuntu-latest
-    environment:
-      name: ${{ github.ref_name }}
-      url: https://${{ github.ref_name }}.env
+    environment: ${{ github.ref_name }}
     concurrency: ${{ github.ref_name }}
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -44,9 +42,6 @@ jobs:
       url: https://${{ github.ref_name }}.env
     concurrency: ${{ github.ref_name }}
     steps:
-      - run: echo Goin to deploy ${{ inputs.environment }}.
-        shell: bash
-
       # https://github.com/marketplace/actions/download-a-build-artifact
       - name: Download artifact
         uses: actions/download-artifact@v3
