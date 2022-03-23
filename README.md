@@ -267,4 +267,12 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 <h3>Creating a build</h3>
 
 <h3>Deploying to a remote server</h3>
-https://github.com/marketplace/actions/ssh-remote-commands
+
+Auto deploy:
+
+```yaml
+  push:
+    branches:
+      - master
+      - develop
+```

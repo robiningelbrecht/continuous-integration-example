@@ -47,3 +47,29 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: artifact-release-without-tests
+
+      # https://github.com/marketplace/actions/rsync-deployments-action
+      - name: Rsync build to server
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete
+          path: .
+          remote_path: /var/www/app/
+          remote_host: ${{ github.ref_name }}.env
+          remote_user: ${{ secrets.USERNAME }}
+          remote_key: ${{ secrets.KEY }}
+
+      # https://github.com/marketplace/actions/ssh-remote-commands
+      - name: Run remote SSH commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /var/www/app/
+            # Put in maintenance mode
+            # Run database migrations
+            # Clear cache
+            # Disable mainenance mode
