@@ -7,9 +7,9 @@
 <p align="center">
 <a href="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml"><img src="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml/badge.svg" alt="CI/CD"></a>
 <a href="https://codecov.io/gh/robiningelbrecht/continuous-integration-example"><img src="https://codecov.io/gh/robiningelbrecht/continuous-integration-example/branch/master/graph/badge.svg?token=9FEMHIZTZ0" alt="codecov.io"></a>
-<a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/robiningelbrecht/continuous-integration-example" alt="License"></a>
+<a href="https://github.com/robiningelbrecht/continuous-integration-example/blob/master/LICENSE"><img src="https://img.shields.io/github/license/robiningelbrecht/continuous-integration-example?logo=open%20source%20initiative&logoColor=white" alt="License"></a>
 <a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat" alt="PHPStan Enabled"></a>
-<a href="https://php.net/"><img src="https://img.shields.io/packagist/php-v/robiningelbrecht/continuous-integration-example/dev-master" alt="PHP"></a>
+<a href="https://php.net/"><img src="https://img.shields.io/badge/php->=8.1-777bb3.svg?logo=php&logoColor=white" alt="PHP"></a>
 </p>
 
 ------
@@ -93,6 +93,7 @@ For the unit tests to be able to run, we need to install PHP (deuh). Later on
 we'll need Xdebug as well to check and ensure code coverage.
 
 ```yaml
+  # https://github.com/marketplace/actions/setup-php-action
   - name: Setup PHP 8.1 with Xdebug 3.x
     uses: shivammathur/setup-php@v2
     with:
@@ -100,9 +101,30 @@ we'll need Xdebug as well to check and ensure code coverage.
       coverage: xdebug
 ```
 
+<h4>🌟PRO tip🌟</h4>
+
+If you want to run your test suite against different PHP versions 
+and/or operating systems you can do this by using a matrix setup:
+
+```yaml
+  runs-on: ${{ matrix.operating-system }}
+  strategy:
+    matrix:
+      operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+      php-versions: [ '7.4', '8.0', '8.1' ]
+  name: Test suite PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }}
+  steps:
+    - name: Setup PHP with Xdebug 3.x
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        coverage: xdebug
+```
+
 The next step is to pull in the code and install all dependencies
 
 ```yaml
+  # https://github.com/marketplace/actions/checkout
   - name: Checkout code
     uses: actions/checkout@v2
 
