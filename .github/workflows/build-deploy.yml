@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    if: github.ref_name == 'master' || github.ref_name == 'development'
     name: Create build for ${{ github.ref_name }}
+    if: github.ref_name == 'master' || github.ref_name == 'development'
     runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/checkout
