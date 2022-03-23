@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create build
-        uses: ./.github/actions/build
+        uses: .github/actions/build
