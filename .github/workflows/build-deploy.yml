@@ -6,9 +6,5 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      # https://github.com/marketplace/actions/checkout
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Create build
         uses: ./.github/actions/build

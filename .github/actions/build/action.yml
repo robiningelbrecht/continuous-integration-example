@@ -1,7 +1,10 @@
-name: "Build"
 runs:
   using: "composite"
   steps:
+    # https://github.com/marketplace/actions/checkout
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     # https://github.com/marketplace/actions/setup-php-action
     - name: Setup PHP 8.1
       uses: shivammathur/setup-php@v2
