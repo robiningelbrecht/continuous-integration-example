@@ -5,6 +5,10 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://production.env
+    concurrency: production
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout code

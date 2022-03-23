@@ -1,0 +1,18 @@
+name: Build & deploy
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref }}
+      url: https://${{ github.ref }}.env
+    concurrency: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - run: echo ${{ github.workflow }}-${{ github.ref }}.
+        shell: bash
