@@ -280,3 +280,4 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 - Parallel testing: https://github.com/paratestphp/paratest
 - Issue templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
+- Visual regression testing: https://github.com/garris/BackstopJS
