@@ -8,7 +8,7 @@
 <a href="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml"><img src="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml/badge.svg" alt="CI/CD"></a>
 <a href="https://codecov.io/gh/robiningelbrecht/continuous-integration-example"><img src="https://codecov.io/gh/robiningelbrecht/continuous-integration-example/branch/master/graph/badge.svg?token=9FEMHIZTZ0" alt="codecov.io"></a>
 <a href="https://github.com/robiningelbrecht/continuous-integration-example/blob/master/LICENSE"><img src="https://img.shields.io/github/license/robiningelbrecht/continuous-integration-example?color=428f7e&logo=open%20source%20initiative&logoColor=white" alt="License"></a>
-<a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-enabled-succes.svg?style=flat" alt="PHPStan Enabled"></a>
+<a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-level%209-succes.svg?logo=php&logoColor=white" alt="PHPStan Enabled"></a>
 <a href="https://php.net/"><img src="https://img.shields.io/packagist/php-v/robiningelbrecht/continuous-integration-example/dev-master?color=777bb3&logo=php&logoColor=white" alt="PHP"></a>
 </p>
 
