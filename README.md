@@ -268,7 +268,8 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 <h3>Deploying to a remote server</h3>
 
-Auto deploy:
+@TODO:
+- Auto deploy:
 
 ```yaml
   push:
@@ -276,3 +277,6 @@ Auto deploy:
       - master
       - develop
 ```
+
+- Parallel testing: https://github.com/paratestphp/paratest
+- Issue templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
