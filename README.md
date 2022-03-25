@@ -9,7 +9,7 @@
 <a href="https://codecov.io/gh/robiningelbrecht/continuous-integration-example"><img src="https://codecov.io/gh/robiningelbrecht/continuous-integration-example/branch/master/graph/badge.svg?token=9FEMHIZTZ0" alt="codecov.io"></a>
 <a href="https://github.com/robiningelbrecht/continuous-integration-example/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-428f7e.svg?logo=open%20source%20initiative&logoColor=white" alt="License"></a>
 <a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-enabled-succes.svg?style=flat" alt="PHPStan Enabled"></a>
-<a href="https://php.net/"><img src="https://img.shields.io/badge/php->=8.1-777bb3.svg?logo=php&logoColor=white" alt="PHP"></a>
+<a href="https://php.net/"><img src="https://img.shields.io/packagist/php-v/robiningelbrecht/continuous-integration-example/dev-master?color=777bb3&logo=php&logoColor=white" alt="PHP"></a>
 </p>
 
 ------
