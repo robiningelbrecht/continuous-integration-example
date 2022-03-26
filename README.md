@@ -264,12 +264,69 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
-Now that new features and bug fixes are safely merged to the main branch,
-it's time to deploy them to a remote server.
+At this point new features and bug fixes can be "safely" merged to the main branch,
+but they still need to be deployed to a remote server. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/build-deploy.yml)
+used in this example contains two jobs that take care of the deploy. It will be triggered manually:
+
+```yaml
+  on:
+    workflow_dispatch:
+```
 
 <h3>Creating a build</h3>
 
+We'll start of with creating a build by using artifacts. Before starting, we first need
+to check if the selected branch is allowed to be deployed:
+
+```yaml
+  if: github.ref_name == 'master' || github.ref_name == 'development'
+  name: Create build for ${{ github.ref_name }}
+```
+
+If any other branch than `master` or `development` is selected the workflow will be aborted.
+
+To create the build with the necessary files we first have to pull the dependencies again
+
+```yaml
+  # https://github.com/marketplace/actions/checkout
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+  # https://github.com/marketplace/actions/setup-php-action
+  - name: Setup PHP 8.1
+    uses: shivammathur/setup-php@v2
+    with:
+      php-version: '8.1'
+
+  - name: Install dependencies
+
+    run: composer install --prefer-dist --no-dev
+```
+
+After which we can create an artifact that contains the files needed for a deploy.
+
+```yaml
+      # https://github.com/marketplace/actions/upload-a-build-artifact
+      - name: Create artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact-release-without-tests
+          path: |
+            src/**
+            vendor/**
+
+```
+
+All artifacts created during a workflow can be downloaded from the workflow summary page.
+This can come in handy to "debug" your artifact and to check which files are actually included.
+
+<p align="center">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/artifacts.png" alt="Artifacts" width="500">
+</p>
+
 <h3>Deploying to a remote server</h3>
+
+The next and final step is to deploy the build we created in the previous step.
 
 @TODO:
 - Auto deploy:

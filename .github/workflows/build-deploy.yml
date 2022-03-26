@@ -18,7 +18,6 @@ jobs:
           php-version: '8.1'
 
       - name: Install dependencies
-        shell: bash
         run: composer install --prefer-dist --no-dev
 
       # https://github.com/marketplace/actions/upload-a-build-artifact
@@ -27,9 +26,8 @@ jobs:
         with:
           name: artifact-release-without-tests
           path: |
-            **
-            !tests/**
-            !.git/**
+            src/**
+            vendor/**
 
   deploy:
     name: Deploy to ${{ github.ref_name }}
