@@ -24,7 +24,7 @@ jobs:
       - name: Create artifact
         uses: actions/upload-artifact@v3
         with:
-          name: artifact-release-without-tests
+          name: release-${{ github.run_number }}
           path: |
             src/**
             vendor/**
@@ -42,7 +42,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: artifact-release-without-tests
+          name: release-${{ github.run_number }}
 
       # https://github.com/marketplace/actions/rsync-deployments-action
       - name: Rsync build to server
