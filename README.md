@@ -264,6 +264,9 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
+Now that new features and bug fixes are safely merged to the main branch,
+it's time to deploy them to a remote server.
+
 <h3>Creating a build</h3>
 
 <h3>Deploying to a remote server</h3>
@@ -281,3 +284,8 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 - Parallel testing: https://github.com/paratestphp/paratest
 - Issue templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
 - Visual regression testing: https://github.com/garris/BackstopJS
+- Caching composer dependencies:
+  - https://github.com/roberto-butti/laravel7-ghactions/blob/master/.github/workflows/laravel_db_manual.yml
+  - https://docs.spryker.com/docs/cloud/dev/spryker-cloud-commerce-os/configuring-deployment-pipelines/configuring-github-actions.html#configuring-basic-validation-with-github-actions
+
+
