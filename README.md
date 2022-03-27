@@ -107,14 +107,14 @@ If you want to run your test suite against different PHP versions
 and/or operating systems you can do this by using a matrix setup:
 
 ```yaml
+  name: Test suite PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }}
   runs-on: ${{ matrix.operating-system }}
   strategy:
     matrix:
-      operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+      operating-system: ['ubuntu-latest', 'ubuntu-18.04']
       php-versions: [ '7.4', '8.0', '8.1' ]
-  name: Test suite PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }}
   steps:
-    - name: Setup PHP with Xdebug 3.x
+    - name: Setup PHP ${{ matrix.php-versions }} with Xdebug 3.x
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
