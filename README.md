@@ -279,8 +279,9 @@ We'll start of with creating a build by using artifacts. Before starting, we fir
 to check if the selected branch is allowed to be deployed:
 
 ```yaml
-  if: github.ref_name == 'master' || github.ref_name == 'development'
-  name: Create build for ${{ github.ref_name }}
+  build:
+    if: github.ref_name == 'master' || github.ref_name == 'development'
+    name: Create build ${{ github.run_number }} for ${{ github.ref_name }}
 ```
 
 If any other branch than `master` or `development` is selected the workflow will be aborted.
@@ -306,15 +307,14 @@ To create the build with the necessary files we first have to pull the dependenc
 After which we can create an artifact that contains the files needed for a deploy.
 
 ```yaml
-      # https://github.com/marketplace/actions/upload-a-build-artifact
-      - name: Create artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifact-release-without-tests
-          path: |
-            src/**
-            vendor/**
-
+  # https://github.com/marketplace/actions/upload-a-build-artifact
+  - name: Create artifact
+    uses: actions/upload-artifact@v3
+    with:
+      name: release-${{ github.run_number }}
+      path: |
+        src/**
+        vendor/**
 ```
 
 All artifacts created during a workflow can be downloaded from the workflow summary page.
@@ -326,7 +326,22 @@ This can come in handy to "debug" your artifact and to check which files are act
 
 <h3>Deploying to a remote server</h3>
 
-The next and final step is to deploy the build we created in the previous step.
+The next and final step is to deploy the build we created in the previous step. 
+Before we can do this, we first need to configure an [environment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment). 
+Navigate to `https://github.com/username/repository/settings/environments` to do this.
+In this example we'll have an environment for `master` and `development` 
+on which we'll configure the following: 
+
+<p align="center">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/environment-settings.png" alt="Environment settings" width="500">
+</p>
+
+```yaml
+  needs: build
+  environment:
+    name: ${{ github.ref_name }}
+    url: https://${{ github.ref_name }}.env
+```
 
 @TODO:
 - Auto deploy:
