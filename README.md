@@ -328,6 +328,7 @@ This can come in handy to "debug" your artifact and to check which files are act
 
 The next and final step is to deploy the build we created in the previous step. 
 Before we can do this, we first need to configure an [environment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment). 
+
 Navigate to `https://github.com/username/repository/settings/environments` to do this.
 In this example we'll have an environment for `master` and `development` 
 on which we'll configure the following: 
@@ -336,6 +337,19 @@ on which we'll configure the following:
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/environment-settings.png" alt="Environment settings" width="500">
 </p>
 
+These settings will enforce that only the `development` branch can be deployed 
+to the development environment. The secrets configured on the environment will be used
+to connect to the remote server during deploy.
+
+Now we're ready to start configuring the deploy job. We start off by
+
+* Referencing the build step. We cannot deploy before the build has been finished.
+* Referencing the environment we are deploying. This will allow us to use the 
+secrets configured on that environment. It will also validate that the correct branch is deployed to 
+that environment.
+
+FYI: `${{ github.ref_name }}` contains the branch or tag the workflow is initialised with.
+
 ```yaml
   needs: build
   environment:
@@ -343,8 +357,95 @@ on which we'll configure the following:
     url: https://${{ github.ref_name }}.env
 ```
 
-@TODO:
-- Auto deploy:
+By setting the `concurrency` we make sure only one deploy (per environment) at a time can be run.
+
+```yaml
+  concurrency: ${{ github.ref_name }}
+```
+
+The first step in this job will download the artifact we created in the previous job.
+It contains all the files that need to be transferred to the remote server.
+
+```yaml
+  # https://github.com/marketplace/actions/download-a-build-artifact
+  - name: Download artifact
+    uses: actions/download-artifact@v3
+    with:
+      name: release-${{ github.run_number }}
+```
+
+Next we'll use `rsync` to transfer al downloaded file to the server. This step uses 
+the secrets we have configured on our repository's [environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)
+to authenticate.
+
+```yaml
+  # https://github.com/marketplace/actions/rsync-deployments-action
+  - name: Rsync build to server
+    uses: burnett01/rsync-deployments@5.2
+    with:
+      switches: -avzr --delete
+      path: .
+      remote_path: /var/www/release-${{ github.run_number }}/
+      remote_host: ${{ secrets.SSH_HOST }}
+      remote_user: ${{ secrets.SSH_USERNAME }}
+      remote_key: ${{ secrets.SSH_KEY }}
+```
+
+Once the files have been transferred, the last thing we need to do is run a deploy script.
+This script can do a number of things depending on the stack you are using. In this example
+we'll run some database updates and install a new crontab.
+
+```yaml
+  # https://github.com/marketplace/actions/ssh-remote-commands
+  - name: Run remote SSH commands
+    uses: appleboy/ssh-action@master
+    with:
+      host: ${{ secrets.HOST }}
+      username: ${{ secrets.USERNAME }}
+      key: ${{ secrets.KEY }}
+      port: ${{ secrets.PORT }}
+      script: |
+        RELEASE_DIRECTORY=/var/www/release-${{ github.run_number }}
+        CURRENT_DIRECTORY=/var/www/app
+        
+        # Remove symlink.
+        rm -r "${CURRENT_DIRECTORY}"
+        
+        # Create symlink to new release.
+        ls -s "${RELEASE_DIRECTORY}" "${CURRENT_DIRECTORY}"
+        
+        # Run database migrations
+        ${CURRENT_DIRECTORY}/bin/console doctrine:migrations:migrate
+        
+        # Install updated crontab
+        crontab ${RELEASE_DIRECTORY}/crontab
+        
+        # Clear cache
+        ${CURRENT_DIRECTORY}/bin/console cache:clear
+```
+
+At this point new features and/or bug fixes are deployed to your remote server. You should be 
+good to go to repeat this cycle on and on and on 😌
+
+<h2>🍔 Hungry for more?</h2>
+
+This example touches only a few aspects of continuous integration and continuous development.
+There are lots of extra things you could cover, but I wanted to keep this clean and simple.
+
+<h3>Integration tests</h3>
+
+Integration testing is the phase in software testing in which individual software modules 
+are combined and tested as a group. There are multiple frameworks out there that provide
+a toolset to implement your integration tests, [codeception](https://codeception.com/) is one of them.
+
+<h3>End-to-end test</h3>
+<h3>Visual regression tests</h3>
+
+A visual regression test checks what the user will see after any code changes have 
+been executed by comparing screenshots taken before and after deploys. [BackstopJS](https://github.com/garris/BackstopJS)
+is an open-source tool that allows you to implement such checks.
+
+<h3>Auto deploy on merging</h3>
 
 ```yaml
   push:
@@ -353,9 +454,16 @@ on which we'll configure the following:
       - develop
 ```
 
+<h2>🙋 Feedback and questions</h2>
+
+As I stated in the beginning, this is only one approach on how you could set up your CI/CD and
+deploy flow. This is not "the "
+
+@TODO:
+- showcase a custom reusable action. "Setup job"
+- example workflow with matrix.
 - Parallel testing: https://github.com/paratestphp/paratest
 - Issue templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
-- Visual regression testing: https://github.com/garris/BackstopJS
 - Caching composer dependencies:
   - https://github.com/roberto-butti/laravel7-ghactions/blob/master/.github/workflows/laravel_db_manual.yml
   - https://docs.spryker.com/docs/cloud/dev/spryker-cloud-commerce-os/configuring-deployment-pipelines/configuring-github-actions.html#configuring-basic-validation-with-github-actions

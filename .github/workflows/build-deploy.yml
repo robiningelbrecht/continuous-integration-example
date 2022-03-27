@@ -64,9 +64,20 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /var/www/app/
-            # Put in maintenance mode
+            RELEASE_DIRECTORY=/var/www/release-${{ github.run_number }}
+            CURRENT_DIRECTORY=/var/www/app
+            
+            # Remove symlink.
+            rm -r "${CURRENT_DIRECTORY}"
+            
+            # Create symlink to new release.
+            ls -s "${RELEASE_DIRECTORY}" "${CURRENT_DIRECTORY}"
+            
             # Run database migrations
+            ${CURRENT_DIRECTORY}/bin/console doctrine:migrations:migrate
+            
+            # Install updated crontab
+            crontab ${RELEASE_DIRECTORY}/crontab
+            
             # Clear cache
-            # Disable mainenance mode
-            # Install crontab.
+            ${CURRENT_DIRECTORY}/bin/console cache:clear
