@@ -446,7 +446,7 @@ good to go to repeat this cycle on and on and on 😌
 <h2>🍔 Hungry for more?</h2>
 
 This example touches only a few aspects of continuous integration and continuous development.
-There are lots of extra things you could cover, but I wanted to keep this clean and simple.
+There are lots of extra things I could have covered, but I wanted to keep this clean and simple.
 
 <h3>Integration tests</h3>
 
@@ -485,8 +485,22 @@ workflow to be triggered as following:
 
 <h3>Speed up your test suite</h3>
 
+As your application and thus test suite grows, your workflows will take longer and longer 
+to complete. There are several nifty tricks to speed up you test suite:
 
-<h2>🙋 Feedback and questions</h2>
+* Use [Paratest](https://github.com/paratestphp/paratest) to run test in parallel
+* [Cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) your vendor dependencies
+* Utilizing an in-memory SQLite database for tests that hit your database
+* Disable Xdebug, if you don't need test coverage
+
+<h3>Composite actions</h3>
+
+[Composite actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action)
+can be used to split workflows into smaller, reusable components. I could tell you all
+about them, but [this blogpost](https://dev.to/jameswallis/using-github-composite-actions-to-make-your-workflows-smaller-and-more-reusable-476l) 
+does a perfect job at explaining how to define and use them. Big up to the author James Wallis 👌
+
+<h2>🌈 Feedback and questions</h2>
 
 As I stated in the beginning, this is only one approach on how you could set up your CI/CD and
 deploy flow. It's just an example to get you going. If you have any feedback or suggestions to 
@@ -494,12 +508,3 @@ improve this tutorial, please let me know. I always open to learn new approaches
 
 If you have any questions, feel free to 📭 [contact me](https://www.linkedin.com/in/robin-ingelbrecht/), 
 I'll be glad to help you out.
-
-@TODO:
-- showcase a custom reusable action. "Setup job"
-- Parallel testing: https://github.com/paratestphp/paratest
-- Caching composer dependencies:
-  - https://github.com/roberto-butti/laravel7-ghactions/blob/master/.github/workflows/laravel_db_manual.yml
-  - https://docs.spryker.com/docs/cloud/dev/spryker-cloud-commerce-os/configuring-deployment-pipelines/configuring-github-actions.html#configuring-basic-validation-with-github-actions
-
-
