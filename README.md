@@ -434,24 +434,37 @@ There are lots of extra things you could cover, but I wanted to keep this clean 
 
 <h3>Integration tests</h3>
 
-Integration testing is the phase in software testing in which individual software modules 
-are combined and tested as a group. There are multiple frameworks out there that provide
+> Integration testing is the phase in software testing in which individual software modules 
+are combined and tested as a group. 
+
+There are multiple frameworks out there that provide
 a toolset to implement your integration tests, [codeception](https://codeception.com/) is one of them.
 
 <h3>End-to-end test</h3>
+
+> End-to-end testing is a technique that tests the entire software product from beginning 
+to end to ensure the application flow behaves as expected.
+
 <h3>Visual regression tests</h3>
 
-A visual regression test checks what the user will see after any code changes have 
-been executed by comparing screenshots taken before and after deploys. [BackstopJS](https://github.com/garris/BackstopJS)
-is an open-source tool that allows you to implement such checks.
+> A visual regression test checks what the user will see after any code changes have 
+been executed by comparing screenshots taken before and after deploys. 
+
+[BackstopJS](https://github.com/garris/BackstopJS) is an open-source tool that allows 
+you to implement such checks.
 
 <h3>Auto deploy on merging</h3>
 
+This example handles deploys as a manual action, but it's possible to automate this.
+Let's assume you want to deploy every time something is merged, you can configure your 
+workflow to be triggered as following:
+
 ```yaml
-  push:
-    branches:
-      - master
-      - develop
+  on:
+    push:
+      branches:
+        - master
+        - develop
 ```
 
 <h2>🙋 Feedback and questions</h2>
