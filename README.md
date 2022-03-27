@@ -457,7 +457,11 @@ is an open-source tool that allows you to implement such checks.
 <h2>🙋 Feedback and questions</h2>
 
 As I stated in the beginning, this is only one approach on how you could set up your CI/CD and
-deploy flow. This is not "the "
+deploy flow. It's just an example to get you going. If you have any feedback or suggestions to 
+improve this tutorial, please let me know. I always open to learn new approaches and tools.
+
+If you have any questions, feel free to 📭 [contact me](https://www.linkedin.com/in/robin-ingelbrecht/), 
+I'll be glad to help you out.
 
 @TODO:
 - showcase a custom reusable action. "Setup job"
