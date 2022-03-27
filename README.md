@@ -369,7 +369,7 @@ Now we're ready to start configuring the deploy job. We start off by
 * Referencing the environment we are deploying. This will
   1. allow us to use the secrets configured on that environment
   2. allow GitHub to validate that the correct branch is deployed to that environment 
-  3. allow GitHub to indicate of a PR has been deployed (or not)
+  3. allow GitHub to indicate of a PR has been deployed (or not):
 
 <p align="center">
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/branch-deploy-info.png" alt="Branch deploy info">
