@@ -111,7 +111,7 @@ we'll need Xdebug as well to check and ensure code coverage.
       coverage: xdebug
 ```
 
-<h4>🌟PRO tip🌟</h4>
+<h4>🔥PRO tip🔥</h4>
 
 If you want to run your test suite against different PHP versions and/or 
 operating systems you can do this by using a [matrix setup](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci-cd-matrix.yml):
@@ -275,8 +275,9 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 <h3>Example pull requests</h3>
 
-* [Failed PR because of PHPStan](https://github.com/robiningelbrecht/continuous-integration-example/pull/3)
-* [Failed PR because of PHP coding standards](https://github.com/robiningelbrecht/continuous-integration-example/pull/4)
+* ❌ [Failed PR because of PHPStan](https://github.com/robiningelbrecht/continuous-integration-example/pull/3)
+* ❌ [Failed PR because of PHP coding standards](https://github.com/robiningelbrecht/continuous-integration-example/pull/4)
+* ❌ [Failed PR because of UnitTest](https://github.com/robiningelbrecht/continuous-integration-example/pull/5)
 * TODO: link to more examples of (failed) PRs.
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
