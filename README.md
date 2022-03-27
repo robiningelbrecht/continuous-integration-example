@@ -514,7 +514,8 @@ does a perfect job at explaining how to define and use them. Big up to the autho
 
 As I stated in the beginning, this is only one approach on how you could set up your CI/CD and
 deploy flow. It's just an example to get you going. If you have any feedback or suggestions to 
-improve this tutorial, please let me know. I'm always open to learn new approaches and tools.
+improve this tutorial, please let me know. I'm always open to learning new approaches and 
+getting to know new tools.
 
 If you have any questions, feel free to 📭 [contact me](https://www.linkedin.com/in/robin-ingelbrecht/), 
 I'll be glad to help you out.
