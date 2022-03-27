@@ -275,7 +275,7 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 <h3>Example pull requests</h3>
 
-* [Failing PR because of PHPStan](https://github.com/robiningelbrecht/continuous-integration-example/pull/3)
+* [Failed PR because of PHPStan](https://github.com/robiningelbrecht/continuous-integration-example/pull/3)
 * [Failed PR because of PHP coding standards](https://github.com/robiningelbrecht/continuous-integration-example/pull/4)
 * TODO: link to more examples of (failed) PRs.
 
