@@ -500,7 +500,7 @@ to complete. There are several nifty tricks to speed up you test suite:
 
 * Use [Paratest](https://github.com/paratestphp/paratest) to run test in parallel
 * [Cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) your vendor dependencies
-* Utilizing an in-memory SQLite database for tests that hit your database
+* Use an in-memory SQLite database for tests that hit your database
 * Disable Xdebug, if you don't need test coverage
 
 <h3>Composite actions</h3>
