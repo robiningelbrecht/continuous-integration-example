@@ -29,6 +29,7 @@ class PizzaBuilderTest extends TestCase
                 Topping::MUSHROOMS,
                 Topping::PEPPERONI,
                 Topping::PEPPERS,
+                Topping::SHRIMPS,
                 Topping::UNIONS
             )
             ->build();

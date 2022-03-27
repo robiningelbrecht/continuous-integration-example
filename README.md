@@ -322,7 +322,6 @@ To create the build with the necessary files we first have to pull the dependenc
       php-version: '8.1'
 
   - name: Install dependencies
-
     run: composer install --prefer-dist --no-dev
 ```
 
