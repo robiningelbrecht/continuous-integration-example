@@ -70,6 +70,16 @@ All other options should stay unchecked.
 These rules will basically disable the ability to push to your default branch
 and force you to work with pull requests and code reviews.
 
+<h3>Configuring issue & PR templates</h3>
+
+With [issue and pull request templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository), 
+you can customize and standardize the information you'd like contributors to include when 
+they open issues and pull requests in your repository.
+
+As this as not a required step to set up your workflows, it's always a good idea to 
+standardize how users provide you with feedback about new features and bugs. It's up to 
+you (and your team) to decide if you want to use this feature.
+
 <h2>💎 Configuring the CI/CD workflow</h2>
 
 The next step is configuring the CI/CD workflow. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci-cd.yml) 
@@ -473,6 +483,9 @@ workflow to be triggered as following:
         - develop
 ```
 
+<h3>Speed up your test suite</h3>
+
+
 <h2>🙋 Feedback and questions</h2>
 
 As I stated in the beginning, this is only one approach on how you could set up your CI/CD and
@@ -484,9 +497,7 @@ I'll be glad to help you out.
 
 @TODO:
 - showcase a custom reusable action. "Setup job"
-- example workflow with matrix.
 - Parallel testing: https://github.com/paratestphp/paratest
-- Issue templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
 - Caching composer dependencies:
   - https://github.com/roberto-butti/laravel7-ghactions/blob/master/.github/workflows/laravel_db_manual.yml
   - https://docs.spryker.com/docs/cloud/dev/spryker-cloud-commerce-os/configuring-deployment-pipelines/configuring-github-actions.html#configuring-basic-validation-with-github-actions
