@@ -372,7 +372,7 @@ Now we're ready to start configuring the deploy job. We start off by
   3. allow GitHub to indicate of a PR has been deployed (or not)
 
 <p align="center">
-	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/branch-deploy-info.png" alt="Branch deploy info" width="500">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/branch-deploy-info.png" alt="Branch deploy info">
 </p>
 
 FYI: `${{ github.ref_name }}` contains the branch or tag the workflow is initialised with.
