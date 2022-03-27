@@ -16,6 +16,5 @@ class PizzaFactoryTest extends TestCase
     {
         $this->assertMatchesJsonSnapshot(json_encode(PizzaFactory::neapolitan(Size::LARGE)));
         $this->assertMatchesJsonSnapshot(json_encode(PizzaFactory::pepperoni(Size::MEDIUM, Crust::THIN)));
-        $this->assertMatchesJsonSnapshot(json_encode(PizzaFactory::veggie(Size::MEDIUM)));
     }
 }
