@@ -275,10 +275,14 @@ These settings require both jobs in the CI/CD workflow to succeed before the PR 
 
 <h3>Example pull requests</h3>
 
+There are some example pull requests to show the different reasons why a PR
+can fail and what it takes for one to pass.
+
 * ❌ [Failed PR because of PHPStan](https://github.com/robiningelbrecht/continuous-integration-example/pull/3)
 * ❌ [Failed PR because of PHP coding standards](https://github.com/robiningelbrecht/continuous-integration-example/pull/4)
 * ❌ [Failed PR because of UnitTest](https://github.com/robiningelbrecht/continuous-integration-example/pull/5)
-* TODO: link to more examples of (failed) PRs.
+* ❌ [Failed PR because of low test coverage](https://github.com/robiningelbrecht/continuous-integration-example/pull/6)
+* ✅ TODO: link green pull request.
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
@@ -362,9 +366,14 @@ to connect to the remote server during deploy.
 Now we're ready to start configuring the deploy job. We start off by
 
 * Referencing the build step. We cannot deploy before the build has been finished.
-* Referencing the environment we are deploying. This will allow us to use the 
-secrets configured on that environment. It will also validate that the correct branch is deployed to 
-that environment.
+* Referencing the environment we are deploying. This will
+  1. allow us to use the secrets configured on that environment
+  2. allow GitHub to validate that the correct branch is deployed to that environment 
+  3. allow GitHub to indicate of a PR has been deployed (or not)
+
+<p align="center">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/ebranch-deploy-info.png" alt="Branch deploy info" width="500">
+</p>
 
 FYI: `${{ github.ref_name }}` contains the branch or tag the workflow is initialised with.
 
