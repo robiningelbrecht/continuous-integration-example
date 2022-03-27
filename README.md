@@ -282,7 +282,7 @@ can fail and what it takes for one to pass.
 * ❌ [Failed PR because of PHP coding standards](https://github.com/robiningelbrecht/continuous-integration-example/pull/4)
 * ❌ [Failed PR because of UnitTest](https://github.com/robiningelbrecht/continuous-integration-example/pull/5)
 * ❌ [Failed PR because of low test coverage](https://github.com/robiningelbrecht/continuous-integration-example/pull/6)
-* ✅ TODO: link green pull request.
+* ✅ [A successful pull request](https://github.com/robiningelbrecht/continuous-integration-example/pull/7)
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
