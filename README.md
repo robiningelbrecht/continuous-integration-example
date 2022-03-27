@@ -124,7 +124,7 @@ operating systems you can do this by using a [matrix setup](https://github.com/r
 This should result in a workflow run for all possible combinations in the matrix:
 
 <p align="center">
-	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/ci-matrix.png" alt="CI matrix" width="500">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/ci-matrix.png" alt="CI matrix" width="250">
 </p>
 
 The next step is to pull in the code and install all dependencies
