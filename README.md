@@ -451,7 +451,7 @@ we'll run some database updates and install a new crontab.
 ```
 
 At this point new features and/or bug fixes are deployed to your remote server. You should be 
-good to go to repeat this cycle on and on and on 😌
+good to go to repeat this cycle over and over and over again 😌
 
 <h2>🍔 Hungry for more?</h2>
 
