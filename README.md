@@ -24,8 +24,7 @@ that can get the job done as wel 💅.
 
 If you liked this tutorial, please consider giving it a ⭐
 
-__Note__: This tutorial won't explain the complete inner workings of GitHub 
-workflows and actions, so some basic knowledge is required.
+__Note__: This tutorial won't explain the complete [inner workings](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) of GitHub workflows and actions, so some basic knowledge is required. 
 
 __Note 2__: Since I'm a PHP developer, all examples in this tutorial are PHP based.
 It should be fairly easy to convert the workflows to be used with a "non PHP" code base.
