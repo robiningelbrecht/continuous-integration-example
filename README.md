@@ -112,7 +112,7 @@ we'll need Xdebug as well to check and ensure code coverage.
 
 <h4>🔥 PRO tip 🔥</h4>
 
-If you want to run your test suite against different PHP versions and/or 
+If you want to run your test suite against multiple PHP versions and/or 
 operating systems you can do this by using a [matrix setup](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci-cd-matrix.yml):
 
 ```yaml
