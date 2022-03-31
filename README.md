@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml"><img src="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci-cd.yml/badge.svg" alt="CI/CD"></a>
+<a href="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci.yml"><img src="https://github.com/robiningelbrecht/continuous-integration-example/actions/workflows/ci.yml/badge.svg" alt="CI/CD"></a>
 <a href="https://codecov.io/gh/robiningelbrecht/continuous-integration-example"><img src="https://codecov.io/gh/robiningelbrecht/continuous-integration-example/branch/master/graph/badge.svg?token=9FEMHIZTZ0" alt="codecov.io"></a>
 <a href="https://github.com/robiningelbrecht/continuous-integration-example/blob/master/LICENSE"><img src="https://img.shields.io/github/license/robiningelbrecht/continuous-integration-example?color=428f7e&logo=open%20source%20initiative&logoColor=white" alt="License"></a>
 <a href="https://phpstan.org/"><img src="https://img.shields.io/badge/PHPStan-level%209-succes.svg?logo=php&logoColor=white&color=31C652" alt="PHPStan Enabled"></a>
@@ -24,8 +24,7 @@ that can get the job done as wel 💅.
 
 If you liked this tutorial, please consider giving it a ⭐
 
-__Note__: This tutorial won't explain the complete inner workings of GitHub 
-workflows and actions, so some basic knowledge is required.
+__Note__: This tutorial won't explain the complete [inner workings](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) of GitHub workflows and actions, so some basic knowledge is required. 
 
 __Note 2__: Since I'm a PHP developer, all examples in this tutorial are PHP based.
 It should be fairly easy to convert the workflows to be used with a "non PHP" code base.
@@ -52,7 +51,7 @@ branch to whatever you want, but usually "_main_" or "_master_" are used.
 
 Branch protection rules allow you to disable force pushing, prevent branches from being deleted, 
 and optionally require status checks before merging. These checks are important to ensure
-code quality and have a solid CI/CD. For now, we will configure the bare minimum, 
+code quality and have a solid CI. For now, we will configure the bare minimum, 
 but we will get back to this.
 
 Navigate to `https://github.com/username/repository/settings/branches` and 
@@ -80,9 +79,9 @@ As this as not a required step to set up your workflows, it's always a good idea
 standardize how users provide you with feedback about new features and bugs. It's up to 
 you (and your team) to decide if you want to use this feature.
 
-<h2>💎 Configuring the CI/CD workflow</h2>
+<h2>💎 Configuring the CI workflow</h2>
 
-The next step is configuring the CI/CD workflow. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci-cd.yml) 
+The next step is configuring the CI workflow. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci.yml) 
 used in this example contains two jobs that __should__ ensure code quality. It is triggered
 for all pull requests:
 
@@ -263,7 +262,7 @@ And check coding standards
 
 The job will fail if one of both tasks does not succeed.
 
-Now that the CI/CD workflow has been configured, we can go back to the 
+Now that the CI workflow has been configured, we can go back to the 
 repository branch protection rules and tighten them up by configuring extra 
 required status checks:
 
@@ -271,14 +270,18 @@ required status checks:
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/protected-branch-settings.png" alt="Protected branch settings" width="500">
 </p>
 
-These settings require both jobs in the CI/CD workflow to succeed before the PR can be merged.
+These settings require both jobs in the CI workflow to succeed before the PR can be merged.
 
 <h3>Example pull requests</h3>
+
+There are some example pull requests to show the different reasons why a PR
+can fail and what it takes for one to pass.
 
 * ❌ [Failed PR because of PHPStan](https://github.com/robiningelbrecht/continuous-integration-example/pull/3)
 * ❌ [Failed PR because of PHP coding standards](https://github.com/robiningelbrecht/continuous-integration-example/pull/4)
 * ❌ [Failed PR because of UnitTest](https://github.com/robiningelbrecht/continuous-integration-example/pull/5)
-* TODO: link to more examples of (failed) PRs.
+* ❌ [Failed PR because of low test coverage](https://github.com/robiningelbrecht/continuous-integration-example/pull/6)
+* ✅ [A successful pull request](https://github.com/robiningelbrecht/continuous-integration-example/pull/7)
 
 <h2>🚀 Configuring the build & deploy workflow</h2>
 
@@ -318,7 +321,6 @@ To create the build with the necessary files we first have to pull the dependenc
       php-version: '8.1'
 
   - name: Install dependencies
-
     run: composer install --prefer-dist --no-dev
 ```
 
@@ -362,9 +364,14 @@ to connect to the remote server during deploy.
 Now we're ready to start configuring the deploy job. We start off by
 
 * Referencing the build step. We cannot deploy before the build has been finished.
-* Referencing the environment we are deploying. This will allow us to use the 
-secrets configured on that environment. It will also validate that the correct branch is deployed to 
-that environment.
+* Referencing the environment we are deploying. This will
+  1. allow us to use the secrets configured on that environment
+  2. allow GitHub to validate that the correct branch is deployed to that environment 
+  3. allow GitHub to indicate if a PR has been deployed (or not):
+
+<p align="center">
+	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/branch-deploy-info.png" alt="Branch deploy info">
+</p>
 
 FYI: `${{ github.ref_name }}` contains the branch or tag the workflow is initialised with.
 
@@ -443,7 +450,7 @@ we'll run some database updates and install a new crontab.
 ```
 
 At this point new features and/or bug fixes are deployed to your remote server. You should be 
-good to go to repeat this cycle on and on and on 😌
+good to go to repeat this cycle over and over and over again 😌
 
 <h2>🍔 Hungry for more?</h2>
 
@@ -492,7 +499,7 @@ to complete. There are several nifty tricks to speed up you test suite:
 
 * Use [Paratest](https://github.com/paratestphp/paratest) to run test in parallel
 * [Cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) your vendor dependencies
-* Utilizing an in-memory SQLite database for tests that hit your database
+* Use an in-memory SQLite database for tests that hit your database
 * Disable Xdebug, if you don't need test coverage
 
 <h3>Composite actions</h3>
@@ -506,7 +513,8 @@ does a perfect job at explaining how to define and use them. Big up to the autho
 
 As I stated in the beginning, this is only one approach on how you could set up your CI/CD and
 deploy flow. It's just an example to get you going. If you have any feedback or suggestions to 
-improve this tutorial, please let me know. I always open to learn new approaches and tools.
+improve this tutorial, please let me know. I'm always open to learning new approaches and 
+getting to know new tools.
 
 If you have any questions, feel free to 📭 [contact me](https://www.linkedin.com/in/robin-ingelbrecht/), 
 I'll be glad to help you out.
