@@ -79,9 +79,9 @@ As this as not a required step to set up your workflows, it's always a good idea
 standardize how users provide you with feedback about new features and bugs. It's up to 
 you (and your team) to decide if you want to use this feature.
 
-<h2>💎 Configuring the CI/CD workflow</h2>
+<h2>💎 Configuring the CI workflow</h2>
 
-The next step is configuring the CI/CD workflow. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci-cd.yml) 
+The next step is configuring the CI workflow. The [workflow](https://github.com/robiningelbrecht/continuous-integration-example/blob/master/.github/workflows/ci.yml) 
 used in this example contains two jobs that __should__ ensure code quality. It is triggered
 for all pull requests:
 
