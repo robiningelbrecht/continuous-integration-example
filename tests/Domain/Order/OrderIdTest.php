@@ -14,6 +14,9 @@ class OrderIdTest extends TestCase
 
         $orderId = OrderId::fromString('order-test');
         $this->assertEquals('order-test', $orderId);
+
+        $orderId = OrderId::fromString('order-test-two');
+        $this->assertEquals('order-test', $orderId);
     }
 
     public function testItShouldThrowWhenEmpty(): void
