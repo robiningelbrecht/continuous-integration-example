@@ -9,6 +9,7 @@ enum Size: string
     case SMALL = 'small';
     case MEDIUM = 'medium';
     case LARGE = 'large';
+
     public function getPrice(): Money
     {
         return match ($this) {
