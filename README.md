@@ -200,9 +200,9 @@ The codecov action also adds a comment on each pull request.
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/codecov-results.png" alt="Codecov.io results" width="500">
 </p>
 
-Last but not least we ensure a minimum code coverage of 90% across the project. 
+Last but not least we ensure a minimum test coverage of 90% across the project. 
 If the minimum coverage isn't reached, the job will fail.
-This is done using [this code coverage checker](https://github.com/robiningelbrecht/phpunit-coverage-check).
+This is done using [this test coverage checker](https://github.com/robiningelbrecht/phpunit-coverage-check).
 
 ```yaml
   - name: Check minimum required code coverage
