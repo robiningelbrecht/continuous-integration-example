@@ -1,4 +1,4 @@
-name: CI/CD (with matrix)
+name: CI (with matrix)
 on:
   workflow_dispatch:
 jobs:
