@@ -205,7 +205,7 @@ If the minimum coverage isn't reached, the job will fail.
 This is done using [this test coverage checker](https://github.com/robiningelbrecht/phpunit-coverage-check).
 
 ```yaml
-  - name: Check minimum required code coverage
+  - name: Check minimum required test coverage
     run: |
       CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
       echo ${CODE_COVERAGE}
