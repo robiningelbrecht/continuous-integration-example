@@ -51,7 +51,7 @@ branch to whatever you want, but usually "_main_" or "_master_" are used.
 
 Branch protection rules allow you to disable force pushing, prevent branches from being deleted, 
 and optionally require status checks before merging. These checks are important to ensure
-code quality and have a solid CI/CD. For now, we will configure the bare minimum, 
+code quality and have a solid CI. For now, we will configure the bare minimum, 
 but we will get back to this.
 
 Navigate to `https://github.com/username/repository/settings/branches` and 
@@ -262,7 +262,7 @@ And check coding standards
 
 The job will fail if one of both tasks does not succeed.
 
-Now that the CI/CD workflow has been configured, we can go back to the 
+Now that the CI workflow has been configured, we can go back to the 
 repository branch protection rules and tighten them up by configuring extra 
 required status checks:
 
@@ -270,7 +270,7 @@ required status checks:
 	<img src="https://github.com/robiningelbrecht/continuous-integration-example/raw/master/readme/protected-branch-settings.png" alt="Protected branch settings" width="500">
 </p>
 
-These settings require both jobs in the CI/CD workflow to succeed before the PR can be merged.
+These settings require both jobs in the CI workflow to succeed before the PR can be merged.
 
 <h3>Example pull requests</h3>
 
