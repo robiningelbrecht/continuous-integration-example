@@ -465,7 +465,7 @@ are combined and tested as a group.
 There are multiple frameworks out there that provide
 a toolset to implement your integration tests, [codeception](https://codeception.com/) is one of them.
 
-<h3>End-to-end test</h3>
+<h3>End-to-end tests</h3>
 
 > End-to-end testing is a technique that tests the entire software product from beginning 
 to end to ensure the application flow behaves as expected.
