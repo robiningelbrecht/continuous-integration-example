@@ -470,6 +470,8 @@ a toolset to implement your integration tests, [codeception](https://codeception
 > End-to-end testing is a technique that tests the entire software product from beginning 
 to end to ensure the application flow behaves as expected.
 
+[https://codecept.io/](https://codecept.io/) is one of many tools that provde a e2e testing framework.
+
 <h3>Visual regression tests</h3>
 
 > A visual regression test checks what the user will see after any code changes have 
