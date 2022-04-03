@@ -1,0 +1,30 @@
+{
+    "price": {
+        "amount": "1400",
+        "currency": "EUR"
+    },
+    "toppings": [
+        {
+            "name": "Garlic",
+            "price": {
+                "amount": "50",
+                "currency": "EUR"
+            }
+        },
+        {
+            "name": "Mushrooms",
+            "price": {
+                "amount": "100",
+                "currency": "EUR"
+            }
+        },
+        {
+            "name": "Unions",
+            "price": {
+                "amount": "50",
+                "currency": "EUR"
+            }
+        }
+    ],
+    "description": "Large pizza, Thick crust, Tomato sauce, Cheese, Garlic, Mushrooms, Unions"
+}

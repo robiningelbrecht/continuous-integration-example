@@ -1,0 +1,37 @@
+{
+    "price": {
+        "amount": "1450",
+        "currency": "EUR"
+    },
+    "toppings": [
+        {
+            "name": "Extra cheese",
+            "price": {
+                "amount": "150",
+                "currency": "EUR"
+            }
+        },
+        {
+            "name": "Unions",
+            "price": {
+                "amount": "50",
+                "currency": "EUR"
+            }
+        },
+        {
+            "name": "Extra cheese",
+            "price": {
+                "amount": "150",
+                "currency": "EUR"
+            }
+        },
+        {
+            "name": "Mushrooms",
+            "price": {
+                "amount": "100",
+                "currency": "EUR"
+            }
+        }
+    ],
+    "description": "Medium pizza, Thin crust, Tomato sauce, Cheese, Extra cheese, Unions, Extra cheese, Mushrooms"
+}
