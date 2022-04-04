@@ -42,7 +42,7 @@ jobs:
 
       - name: Check minimum required code coverage
         run: |
-          CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 90 --processor=clover-coverage)
+          CODE_COVERAGE=$(vendor/bin/coverage-checker clover.xml 100 --processor=clover-coverage)
           echo ${CODE_COVERAGE}
           if [[ ${CODE_COVERAGE} == *"test coverage, got"* ]] ; then
             exit 1;
