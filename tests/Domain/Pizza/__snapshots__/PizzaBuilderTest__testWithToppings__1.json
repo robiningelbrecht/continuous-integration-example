@@ -1,6 +1,6 @@
 {
     "price": {
-        "amount": "1575",
+        "amount": "1775",
         "currency": "EUR"
     },
     "toppings": [
@@ -47,6 +47,13 @@
             }
         },
         {
+            "name": "Shrimps",
+            "price": {
+                "amount": "200",
+                "currency": "EUR"
+            }
+        },
+        {
             "name": "Unions",
             "price": {
                 "amount": "50",
@@ -54,5 +61,5 @@
             }
         }
     ],
-    "description": "Medium pizza, Thin crust, Tomato sauce, Cheese, Extra cheese, Garlic, Ham, Mushrooms, Pepperoni, Peppers, Unions"
+    "description": "Medium pizza, Thin crust, Tomato sauce, Cheese, Extra cheese, Garlic, Ham, Mushrooms, Pepperoni, Peppers, Shrimps, Unions"
 }
